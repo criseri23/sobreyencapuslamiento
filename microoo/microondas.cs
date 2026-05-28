@@ -1,60 +1,77 @@
-﻿class Microondas
+class SmartTV
 {
-   private int potencia;
-    private int tiempoSegundos;
-    private bool puertaAbierta;
-    private bool enFuncionamiento;
+    private string marca;
+    private int pulgadas;
+    private bool encendido;
+    private int canalActual;
+    private int volumen;
+    private bool esPremium;
 
-    public Microondas(int potencia)
+    public SmartTV(string marca, int pulgadas, bool esPremium)
     {
-     this.potencia = potencia;
-        tiempoSegundos = 0;
-        puertaAbierta = false;
-        enFuncionamiento = false;
+        this.marca = marca;
+        this.pulgadas = pulgadas;
+        this.esPremium = esPremium;
+
+        encendido = false;
+        canalActual = 1;
+        volumen = 20;
     }
 
-    public string PANTALLA_TIEMPO
+    public string CODIGO_CONFIG
     {
         get
         {
-            int minutos = tiempoSegundos / 60;
-            int segundos = tiempoSegundos % 60;
-            return minutos.ToString("00") + ":" + segundos.ToString("00");
+            if (esPremium)
+            {
+                return marca + "-" + pulgadas + "-PREM";
+            }
+            else
+            {
+                return marca + "-" + pulgadas + "-STD";
+            }
         }
     }
 
-    public void AgregarTiempo()
+    public void Power()
     {
-        tiempoSegundos += 30;
+        encendido = !encendido;
     }
 
-    public void AgregarTiempo(int segundos)
+    public void CambiarCanal()
     {
-        tiempoSegundos += segundos;
-    }
-
-    public void Iniciar()
-    {
-        if (!puertaAbierta && tiempoSegundos > 0)
+        if (encendido)
         {
-            enFuncionamiento = true;
+            canalActual++;
         }
     }
 
-    public void Detener()
+    public void CambiarCanal(int canal)
     {
-        enFuncionamiento = false;
+        if (encendido)
+        {
+            canalActual = canal;
+        }
     }
 
-    public void AbrirCerrarPuerta()
+    public void RegularVolumen(bool subir)
     {
-        puertaAbierta = !puertaAbierta;
+        if (encendido)
+        {
+            if (subir)
+            {
+                volumen += 2;
+            }
+            else
+            {
+                volumen -= 2;
+            }
+        }
     }
 
-    public void Mostrar()
+    public void MostrarEstado()
     {
-        Console.WriteLine("Tiempo: " + PANTALLA_TIEMPO);
-        Console.WriteLine("Potencia: " + potencia);
-        Console.WriteLine("Puerta abierta: " + puertaAbierta);
+        Console.WriteLine("Canal: " + canalActual);
+        Console.WriteLine("Volumen: " + volumen);
     }
 }
