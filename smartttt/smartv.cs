@@ -1,77 +1,78 @@
-﻿class SmartTV
+
+class SmartTV
 {
-    private string _marca;
-    private int _pulgadas;
-    private bool _encendido;
-    private int _canalActual;
-    private int _volumen;
-    private bool _esPremium;
+    private string marca;
+    private int pulgadas;
+    private bool encendido;
+    private int canalActual;
+    private int volumen;
+    private bool esPremium;
 
     public SmartTV(string marca, int pulgadas, bool esPremium)
     {
-        this._marca = marca;
-        this._pulgadas = pulgadas;
-        this._esPremium = esPremium;
+        this.marca = marca;
+        this.pulgadas = pulgadas;
+        this.esPremium = esPremium;
 
-        _encendido = false;
-        _canalActual = 1;
-        _volumen = 20;
+        encendido = false;
+        canalActual = 1;
+        volumen = 20;
     }
 
     public string CODIGO_CONFIG
     {
         get
         {
-            if (_esPremium)
+            if (esPremium)
             {
-                return _marca + "-" + _pulgadas + "-PREM";
+                return marca + "-" + pulgadas + "-PREM";
             }
             else
             {
-                return _marca + "-" + _pulgadas + "-STD";
+                return marca + "-" + pulgadas + "-STD";
             }
         }
     }
 
     public void Power()
     {
-        _encendido = !_encendido;
+        encendido = !encendido;
     }
 
     public void CambiarCanal()
     {
-        if (_encendido)
+        if (encendido)
         {
-            _canalActual++;
+            canalActual++;
         }
     }
 
     public void CambiarCanal(int canal)
     {
-        if (_encendido)
+        if (encendido)
         {
-                   _canalActual = canal;
+            canalActual = canal;
         }
     }
 
     public void RegularVolumen(bool subir)
     {
-        if (_encendido)
+        if (encendido)
         {
             if (subir)
             {
-                _volumen += 2;
+                volumen += 2;
             }
             else
             {
-                _volumen -= 2;
+                volumen -= 2;
             }
         }
     }
 
     public void MostrarEstado()
     {
-        Console.WriteLine("Canal: " + _canalActual);
-        Console.WriteLine("Volumen: " + _volumen);
+        Console.WriteLine("Canal: " + canalActual);
+        Console.WriteLine("Volumen: " + volumen);
     }
 }
