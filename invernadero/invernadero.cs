@@ -1,4 +1,4 @@
-﻿class Invernadero
+class Invernadero
 {
     private string nombreSector;
     private int temperaturaActual;
@@ -9,41 +9,77 @@
 
     public Invernadero(string nombreSector, string tipoCultivo)
     {
-        this.nombreSector = nombreSector;
-        this.tipoCultivo = tipoCultivo;
+        this.NombreSector = nombreSector;
+        this.TipoCultivo = tipoCultivo;
 
-        temperaturaActual = 25;
-        humedadSuelo = 50;
+        this.TemperaturaActual = 25;
+        this.HumedadSuelo = 50;
+    }
+
+    public string NombreSector
+    {
+        get { return nombreSector; }
+        set { nombreSector = value; }
+    }
+
+    public int TemperaturaActual
+    {
+        get { return temperaturaActual; }
+        set { temperaturaActual = value; }
+    }
+
+    public int HumedadSuelo
+    {
+        get { return humedadSuelo; }
+        set { humedadSuelo = value; }
+    }
+
+    public bool SistemaRiegoActivo
+    {
+        get { return sistemaRiegoActivo; }
+        set { sistemaRiegoActivo = value; }
+    }
+
+    public bool CalefaccionActiva
+    {
+        get { return calefaccionActiva; }
+        set { calefaccionActiva = value; }
+    }
+
+    public string TipoCultivo
+    {
+        get { return tipoCultivo; }
+        set { tipoCultivo = value; }
     }
 
     public string REPORTE_ESTADO
     {
         get
         {
-            return "SECTOR: " + nombreSector +
-                   " CULTIVO: " + tipoCultivo;
+            return "SECTOR: " + NombreSector +
+                   " CULTIVO: " + TipoCultivo;
         }
     }
 
     public void SimularClima()
     {
-        humedadSuelo -= 5;
-        temperaturaActual += 1;
+        HumedadSuelo -= 5;
+        TemperaturaActual += 1;
     }
 
     public void SimularClima(int humedad, int temperatura)
     {
-        humedadSuelo = humedad;
-        temperaturaActual = temperatura;
+        HumedadSuelo = humedad;
+        TemperaturaActual = temperatura;
     }
 
     public void ControlAutomatico()
     {
-        if (tipoCultivo == "TROPICAL")
+        if (TipoCultivo == "TROPICAL")
         {
-            if (humedadSuelo < 60)
+            if (HumedadSuelo < 60)
             {
-                sistemaRiegoActivo = true;
+                SistemaRiegoActivo = true;
             }
         }
     }
@@ -51,7 +87,7 @@
     public void Mostrar()
     {
         Console.WriteLine(REPORTE_ESTADO);
-        Console.WriteLine("Temperatura: " + temperaturaActual);
-        Console.WriteLine("Humedad: " + humedadSuelo);
+        Console.WriteLine("Temperatura: " + TemperaturaActual);
+        Console.WriteLine("Humedad: " + HumedadSuelo);
     }
 }
