@@ -1,19 +1,82 @@
-﻿class Program5
+class Bateria
 {
-    static void Main(string[] args)
+    private int porcentajeCarga;
+    private int saludBateria;
+    private bool conectadoCargador;
+    private bool modoAhorroEnergia;
+
+    public Bateria(int carga, int salud)
     {
-        Bateria bat1 = new Bateria(50, 100);
+        this.PorcentajeCarga = carga;
+        this.SaludBateria = salud;
 
-        bat1.Mostrar();
+        this.ConectadoCargador = false;
+        this.ModoAhorroEnergia = false;
+    }
 
-        bat1.ConsumirEnergia(20);
+    public int PorcentajeCarga
+    {
+        get { return porcentajeCarga; }
+        set { porcentajeCarga = value; }
+    }
 
-        bat1.Mostrar();
+    public int SaludBateria
+    {
+        get { return saludBateria; }
+        set { saludBateria = value; }
+    }
 
-        bat1.AlternarCargador();
+    public bool ConectadoCargador
+    {
+        get { return conectadoCargador; }
+        set { conectadoCargador = value; }
+    }
 
-        bat1.CicloDeCarga();
+    public bool ModoAhorroEnergia
+    {
+        get { return modoAhorroEnergia; }
+        set { modoAhorroEnergia = value; }
+    }
 
-        bat1.Mostrar();
+    public string ESTADO_TEXTO
+    {
+        get
+        {
+            return "BATERIA: " + PorcentajeCarga + "%";
+        }
+    }
+
+    public void AlternarCargador()
+    {
+        ConectadoCargador = !ConectadoCargador;
+    }
+
+    public void ConsumirEnergia()
+    {
+        PorcentajeCarga -= 1;
+    }
+
+    public void ConsumirEnergia(int gasto)
+    {
+        PorcentajeCarga -= gasto;
+    }
+
+    public void CicloDeCarga()
+    {
+        if (ConectadoCargador)
+        {
+            PorcentajeCarga += 10;
+
+            if (PorcentajeCarga > SaludBateria)
+            {
+                PorcentajeCarga = SaludBateria;
+            }
+        }
+    }
+
+    public void Mostrar()
+    {
+        Console.WriteLine(ESTADO_TEXTO);
+        Console.WriteLine("Salud: " + SaludBateria);
     }
 }
