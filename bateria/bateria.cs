@@ -1,4 +1,3 @@
-﻿
 class Bateria
 {
     private int porcentajeCarga;
@@ -8,22 +7,22 @@ class Bateria
 
     public Bateria(int carga, int salud)
     {
-    this.PorcentajeCarga = carga;
+        this.PorcentajeCarga = carga;
         this.SaludBateria = salud;
 
-    this.ConectadoCargador = false;
+        this.ConectadoCargador = false;
         this.ModoAhorroEnergia = false;
     }
 
     public int PorcentajeCarga
     {
-      get { return porcentajeCarga; }
-      set { porcentajeCarga = value; }
+        get { return porcentajeCarga; }
+        set { porcentajeCarga = value; }
     }
 
     public int SaludBateria
     {
-        get { return saludBateria; }
+  get { return saludBateria; }
         set { saludBateria = value; }
     }
 
@@ -35,8 +34,8 @@ class Bateria
 
     public bool ModoAhorroEnergia
     {
-     get { return modoAhorroEnergia; }
-   set { modoAhorroEnergia = value; }
+        get { return modoAhorroEnergia; }
+        set { modoAhorroEnergia = value; }
     }
 
     public string ESTADO_TEXTO
@@ -70,7 +69,7 @@ class Bateria
 
             if (PorcentajeCarga > SaludBateria)
             {
-             PorcentajeCarga = SaludBateria;
+                PorcentajeCarga = SaludBateria;
             }
         }
     }
@@ -78,6 +77,6 @@ class Bateria
     public void Mostrar()
     {
         Console.WriteLine(ESTADO_TEXTO);
-        Console.WriteLine("Sayulud: " + SaludBateria);
+        Console.WriteLine("Salud: " + SaludBateria);
     }
 }
