@@ -1,9 +1,10 @@
-﻿class Program4
+class Program4
 {
     static void Main(string[] args)
     {
-        Invernadero inv1 = new Invernadero("Norte", "TROoPICAL");
- inv1.Mostrar();
+        Invernadero inv1 = new Invernadero("Norte", "TROPICAL");
+
+        inv1.Mostrar();
 
         inv1.SimularClima();
 
