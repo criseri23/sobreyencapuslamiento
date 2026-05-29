@@ -1,20 +1,48 @@
-﻿
-using System;
-
 class Automovil
 {
-    private string marca; private bool motorEncendido;
+    private string marca;
+    private bool motorEncendido;
     private int velocidadActual;
     private bool cajaAutomatica;
     private bool modoCrucero;
 
     public Automovil(string marca, bool cajaAutomatica)
     {
-        this.marca = marca;
-        this.cajaAutomatica = cajaAutomatica;
-        motorEncendido = false;
-        velocidadActual = 0;
-        modoCrucero = false;
+        this.Marca = marca;
+        this.CajaAutomatica = cajaAutomatica;
+        this.MotorEncendido = false;
+        this.VelocidadActual = 0;
+        this.ModoCrucero = false;
+    }
+
+    public string Marca
+    {
+        get { return marca; }
+        set { marca = value; }
+    }
+
+    public bool MotorEncendido
+    {
+        get { return motorEncendido; }
+        set { motorEncendido = value; }
+    }
+
+    public int VelocidadActual
+    {
+        get { return velocidadActual; }
+        set { velocidadActual = value; }
+    }
+
+    public bool CajaAutomatica
+    {
+        get { return cajaAutomatica; }
+        set { cajaAutomatica = value; }
+    }
+
+    public bool ModoCrucero
+    {
+        get { return modoCrucero; }
+        set { modoCrucero = value; }
     }
 
     public string IDENTIFICADOR
@@ -23,7 +51,7 @@ class Automovil
         {
             string tipoCaja;
 
-            if (cajaAutomatica)
+            if (CajaAutomatica)
             {
                 tipoCaja = "AUTO";
             }
@@ -32,59 +60,60 @@ class Automovil
                 tipoCaja = "MAN";
             }
 
-            return marca.Substring(0, 3).ToUpper() + "-" + tipoCaja + "-2026";
+            return Marca.Substring(0, 3).ToUpper() + "-" + tipoCaja + "-2026";
         }
     }
 
     public void EncenderApagar()
     {
-        motorEncendido = !motorEncendido;
+        MotorEncendido = !MotorEncendido;
 
-        if (!motorEncendido)
+        if (!MotorEncendido)
         {
-            velocidadActual = 0;
-            modoCrucero = false;
+            VelocidadActual = 0;
+            ModoCrucero = false;
         }
     }
 
     public void Acelerar()
     {
-        if (motorEncendido)
+        if (MotorEncendido)
         {
-            velocidadActual += 10;
+            VelocidadActual += 10;
         }
     }
 
     public void Acelerar(int km)
     {
-        if (motorEncendido)
+        if (MotorEncendido)
         {
-            velocidadActual += km;
+            VelocidadActual += km;
         }
     }
 
     public void Frenar()
     {
-        velocidadActual = 0;
-        modoCrucero = false;
+        VelocidadActual = 0;
+        ModoCrucero = false;
     }
 
     public void Frenar(int km)
     {
-        velocidadActual -= km;
+        VelocidadActual -= km;
 
-        if (velocidadActual < 0)
+        if (VelocidadActual < 0)
         {
-            velocidadActual = 0;
+            VelocidadActual = 0;
         }
 
-        modoCrucero = false;
+        ModoCrucero = false;
     }
 
     public void MostrarDatos()
     {
-        Console.WriteLine("Motor: " + motorEncendido);
-        Console.WriteLine("Velocidad: " + velocidadActual);
-        Console.WriteLine("Modo crucero: " + modoCrucero);
+        Console.WriteLine("Motor: " + MotorEncendido);
+        Console.WriteLine("Velocidad: " + VelocidadActual);
+        Console.WriteLine("Modo crucero: " + ModoCrucero);
     }
 }
+
