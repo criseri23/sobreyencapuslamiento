@@ -1,60 +1,85 @@
-﻿class Microondas
+class Microondas
 {
-   private int potencia;
+    private int potencia;
     private int tiempoSegundos;
     private bool puertaAbierta;
     private bool enFuncionamiento;
 
     public Microondas(int potencia)
     {
-     this.potencia = potencia;
-        tiempoSegundos = 0;
-        puertaAbierta = false;
-        enFuncionamiento = false;
+        this.Potencia = potencia;
+        this.TiempoSegundos = 0;
+        this.PuertaAbierta = false;
+        this.EnFuncionamiento = false;
+    }
+
+    public int Potencia
+    {
+        get { return potencia; }
+        set { potencia = value; }
+    }
+
+    public int TiempoSegundos
+    {
+        get { return tiempoSegundos; }
+        set { tiempoSegundos = value; }
+    }
+
+    public bool PuertaAbierta
+    {
+        get { return puertaAbierta; }
+        set { puertaAbierta = value; }
+    }
+
+    public bool EnFuncionamiento
+    {
+        get { return enFuncionamiento; }
+        set { enFuncionamiento = value; }
     }
 
     public string PANTALLA_TIEMPO
     {
         get
         {
-            int minutos = tiempoSegundos / 60;
-            int segundos = tiempoSegundos % 60;
+            int minutos = TiempoSegundos / 60;
+            int segundos = TiempoSegundos % 60;
+
             return minutos.ToString("00") + ":" + segundos.ToString("00");
         }
     }
 
     public void AgregarTiempo()
     {
-        tiempoSegundos += 30;
+        TiempoSegundos += 30;
     }
 
     public void AgregarTiempo(int segundos)
     {
-        tiempoSegundos += segundos;
+        TiempoSegundos += segundos;
     }
 
     public void Iniciar()
     {
-        if (!puertaAbierta && tiempoSegundos > 0)
+        if (!PuertaAbierta && TiempoSegundos > 0)
         {
-            enFuncionamiento = true;
+            EnFuncionamiento = true;
         }
     }
 
     public void Detener()
     {
-        enFuncionamiento = false;
+        EnFuncionamiento = false;
     }
 
     public void AbrirCerrarPuerta()
     {
-        puertaAbierta = !puertaAbierta;
+        PuertaAbierta = !PuertaAbierta;
     }
 
     public void Mostrar()
     {
         Console.WriteLine("Tiempo: " + PANTALLA_TIEMPO);
-        Console.WriteLine("Potencia: " + potencia);
-        Console.WriteLine("Puerta abierta: " + puertaAbierta);
+        Console.WriteLine("Potencia: " + Potencia);
+        Console.WriteLine("Puerta abierta: " + PuertaAbierta);
     }
 }
