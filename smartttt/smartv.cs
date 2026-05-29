@@ -1,4 +1,3 @@
-
 class SmartTV
 {
     private string marca;
@@ -9,70 +8,105 @@ class SmartTV
     private bool esPremium;
 
     public SmartTV(string marca, int pulgadas, bool esPremium)
-    {
-        this.marca = marca;
-        this.pulgadas = pulgadas;
-        this.esPremium = esPremium;
+    {this.Marca = marca;
+        this.Pulgadas = pulgadas;
+        this.EsPremium = esPremium;
 
-        encendido = false;
-        canalActual = 1;
-        volumen = 20;
+        this.Encendido = false;
+        this.CanalActual = 1;
+        this.Volumen = 20;
+    }
+
+    public string Marca
+    {
+        get { return marca; }
+        set { marca = value; }
+    }
+
+    public int Pulgadas
+    {
+        get { return pulgadas; }
+        set { pulgadas = value; }
+    }
+
+    public bool Encendido
+    {
+        get { return encendido; }
+        set { encendido = value; }
+    }
+
+    public int CanalActual
+    {
+get { return canalActual; }
+        set { canalActual = value; }
+    }
+
+    public int Volumen
+    {
+        get { return volumen; }
+        set { volumen = value; }
+    }
+
+    public bool EsPremium
+    {
+        get { return esPremium; }
+        set { esPremium = value; }
     }
 
     public string CODIGO_CONFIG
     {
         get
         {
-            if (esPremium)
+            if (EsPremium)
             {
-                return marca + "-" + pulgadas + "-PREM";
+                return Marca + "-" + Pulgadas + "-PREM";
             }
             else
             {
-                return marca + "-" + pulgadas + "-STD";
+                return Marca + "-" + Pulgadas + "-STD";
             }
         }
     }
 
     public void Power()
     {
-        encendido = !encendido;
+        Encendido = !Encendido;
     }
 
     public void CambiarCanal()
     {
-        if (encendido)
+        if (Encendido)
         {
-            canalActual++;
+            CanalActual++;
         }
     }
 
     public void CambiarCanal(int canal)
     {
-        if (encendido)
+        if (Encendido)
         {
-            canalActual = canal;
+            CanalActual = canal;
         }
     }
 
     public void RegularVolumen(bool subir)
     {
-        if (encendido)
+        if (Encendido)
         {
             if (subir)
             {
-                volumen += 2;
+                Volumen += 2;
             }
             else
             {
-                volumen -= 2;
+                Volumen -= 2;
             }
         }
     }
 
     public void MostrarEstado()
     {
-        Console.WriteLine("Canal: " + canalActual);
-        Console.WriteLine("Volumen: " + volumen);
+        Console.WriteLine("Canal: " + CanalActual);
+        Console.WriteLine("Volumen: " + Volumen);
     }
 }
