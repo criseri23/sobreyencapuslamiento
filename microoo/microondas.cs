@@ -1,13 +1,13 @@
-class Microondas
+﻿class Microondas
 {
-    private int potencia;
+   private int potencia;
     private int tiempoSegundos;
     private bool puertaAbierta;
     private bool enFuncionamiento;
 
     public Microondas(int potencia)
     {
-        this.potencia = potencia;
+     this.potencia = potencia;
         tiempoSegundos = 0;
         puertaAbierta = false;
         enFuncionamiento = false;
@@ -19,7 +19,6 @@ class Microondas
         {
             int minutos = tiempoSegundos / 60;
             int segundos = tiempoSegundos % 60;
-
             return minutos.ToString("00") + ":" + segundos.ToString("00");
         }
     }

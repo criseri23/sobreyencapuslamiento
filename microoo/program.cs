@@ -1,4 +1,4 @@
-class Program3
+﻿class Program3
 {
     static void Main(string[] args)
     {
@@ -12,4 +12,3 @@ class Program3
         micro1.Mostrar();
     }
 }
-
