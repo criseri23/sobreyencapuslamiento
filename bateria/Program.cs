@@ -1,82 +1,67 @@
-class Bateria
+using System;
+
+class Program
 {
-    private int porcentajeCarga;
-    private int saludBateria;
-    private bool conectadoCargador;
-    private bool modoAhorroEnergia;
-
-    public Bateria(int carga, int salud)
+    static void Main(string[] args)
     {
-        this.PorcentajeCarga = carga;
-        this.SaludBateria = salud;
+        Bateria bateria = new Bateria(80, 100);
+        int opcion;
 
-        this.ConectadoCargador = false;
-        this.ModoAhorroEnergia = false;
-    }
-
-    public int PorcentajeCarga
-    {
-        get { return porcentajeCarga; }
-        set { porcentajeCarga = value; }
-    }
-
-    public int SaludBateria
-    {
-        get { return saludBateria; }
-        set { saludBateria = value; }
-    }
-
-    public bool ConectadoCargador
-    {
-        get { return conectadoCargador; }
-        set { conectadoCargador = value; }
-    }
-
-    public bool ModoAhorroEnergia
-    {
-        get { return modoAhorroEnergia; }
-        set { modoAhorroEnergia = value; }
-    }
-
-    public string ESTADO_TEXTO
-    {
-        get
+        do
         {
-            return "BATERIA: " + PorcentajeCarga + "%";
-        }
-    }
+            Console.Clear();
 
-    public void AlternarCargador()
-    {
-        ConectadoCargador = !ConectadoCargador;
-    }
+            Console.WriteLine("=================================");
+            Console.WriteLine(bateria.ESTADO_TEXTO);
+            Console.WriteLine("Modo ahorro: " + (bateria.ModoAhorroEnergia ? "ACTIVADO" : "DESACTIVADO"));
+            Console.WriteLine("=================================");
 
-    public void ConsumirEnergia()
-    {
-        PorcentajeCarga -= 1;
-    }
+            Console.WriteLine("1- Conectar/Desconectar cargador");
+            Console.WriteLine("2- Usar teléfono en reposo");
+            Console.WriteLine("3- Abrir una app pesada");
+            Console.WriteLine("4- Simular carga");
+            Console.WriteLine("5- Mostrar información");
+            Console.WriteLine("0- Salir");
+            Console.Write("\nOpción: ");
 
-    public void ConsumirEnergia(int gasto)
-    {
-        PorcentajeCarga -= gasto;
-    }
+            opcion = int.Parse(Console.ReadLine());
 
-    public void CicloDeCarga()
-    {
-        if (ConectadoCargador)
-        {
-            PorcentajeCarga += 10;
-
-            if (PorcentajeCarga > SaludBateria)
+            switch (opcion)
             {
-                PorcentajeCarga = SaludBateria;
-            }
-        }
-    }
+                case 1:
+                    bateria.AlternarCargador();
+                    break;
 
-    public void Mostrar()
-    {
-        Console.WriteLine(ESTADO_TEXTO);
-        Console.WriteLine("Salud: " + SaludBateria);
+                case 2:
+                    bateria.ConsumirEnergia();
+                    break;
+
+                case 3:
+                    Console.Write("¿Cuánta batería consume la app?: ");
+                    int gasto = int.Parse(Console.ReadLine());
+                    bateria.ConsumirEnergia(gasto);
+                    break;
+
+                case 4:
+                    bateria.CicloDeCarga();
+                    break;
+
+                case 5:
+                    bateria.Mostrar();
+                    Console.WriteLine("\nPresione una tecla para continuar...");
+                    Console.ReadKey();
+                    break;
+
+                case 0:
+                    Console.WriteLine("Saliendo...");
+                    break;
+
+                default:
+                    Console.WriteLine("Opción inválida.");
+                    Console.ReadKey();
+                    break;
+            }
+
+        } while (opcion != 0);
     }
 }
