@@ -1,13 +1,13 @@
 class Microondas
 {
-    private int potencia;
-    private int tiempoSegundos;
-    private bool puertaAbierta;
-    private bool enFuncionamiento;
+    private int _potencia;
+    private int _tiempoSegundos;
+    private bool _puertaAbierta;
+    private bool _enFuncionamiento;
 
-    public Microondas(int potencia)
+    public Microondas(int _potencia)
     {
-        this.Potencia = potencia;
+        this.Potencia = _potencia;
         this.TiempoSegundos = 0;
         this.PuertaAbierta = false;
         this.EnFuncionamiento = false;
@@ -15,26 +15,26 @@ class Microondas
 
     public int Potencia
     {
-        get { return potencia; }
-        set { potencia = value; }
+        get { return _potencia; }
+        set { _potencia = value; }
     }
 
     public int TiempoSegundos
     {
-        get { return tiempoSegundos; }
-        set { tiempoSegundos = value; }
+        get { return _tiempoSegundos; }
+        set { _tiempoSegundos = value; }
     }
 
     public bool PuertaAbierta
     {
-        get { return puertaAbierta; }
-        set { puertaAbierta = value; }
+        get { return _puertaAbierta; }
+        set { _puertaAbierta = value; }
     }
 
     public bool EnFuncionamiento
     {
-        get { return enFuncionamiento; }
-        set { enFuncionamiento = value; }
+        get { return _enFuncionamiento; }
+        set { _enFuncionamiento = value; }
     }
 
     public string PANTALLA_TIEMPO
