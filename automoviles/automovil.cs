@@ -1,15 +1,15 @@
 class Automovil
 {
-    private string marca;
-    private bool motorEncendido;
-    private int velocidadActual;
-    private bool cajaAutomatica;
-    private bool modoCrucero;
+    private string _marca;
+    private bool _motorEncendido;
+    private int _velocidadActual;
+    private bool _cajaAutomatica;
+    private bool _modoCrucero;
 
-    public Automovil(string marca, bool cajaAutomatica)
+    public Automovil(string _marca, bool _cajaAutomatica)
     {
-        this.Marca = marca;
-        this.CajaAutomatica = cajaAutomatica;
+        this.Marca = _marca;
+        this.CajaAutomatica = _cajaAutomatica;
         this.MotorEncendido = false;
         this.VelocidadActual = 0;
         this.ModoCrucero = false;
@@ -17,32 +17,32 @@ class Automovil
 
     public string Marca
     {
-        get { return marca; }
-        set { marca = value; }
+        get { return _marca; }
+        set { _marca = value; }
     }
 
     public bool MotorEncendido
     {
-        get { return motorEncendido; }
-        set { motorEncendido = value; }
+        get { return _motorEncendido; }
+        set { _motorEncendido = value; }
     }
 
     public int VelocidadActual
     {
-        get { return velocidadActual; }
-        set { velocidadActual = value; }
+        get { return _velocidadActual; }
+        set { _velocidadActual = value; }
     }
 
     public bool CajaAutomatica
     {
-        get { return cajaAutomatica; }
-        set { cajaAutomatica = value; }
+        get { return _cajaAutomatica; }
+        set { _cajaAutomatica = value; }
     }
 
     public bool ModoCrucero
     {
-        get { return modoCrucero; }
-        set { modoCrucero = value; }
+        get { return _modoCrucero; }
+        set { _modoCrucero = value; }
     }
 
     public string IDENTIFICADOR
