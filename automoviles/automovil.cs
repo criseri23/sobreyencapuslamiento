@@ -1,78 +1,127 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace SimuladorAutomovil
 {
-    internal class Program
+   public class Automovil
+{
+    private string _marca;
+    private bool _motorEncendido;
+    private int _velocidadActual;
+    private bool _cajaAutomatica;
+    private bool _modoCrucero;
+
+    public Automovil(string _marca, bool _cajaAutomatica)
     {
-        static void Main(string[] args)
+        this.Marca = _marca;
+        this.CajaAutomatica = _cajaAutomatica;
+        this.MotorEncendido = false;
+        this.VelocidadActual = 0;
+        this.ModoCrucero = false;
+    }
+
+    public string Marca
+    {
+        get { return _marca; }
+        set { _marca = value; }
+    }
+
+    public bool MotorEncendido
+    {
+        get { return _motorEncendido; }
+        set { _motorEncendido = value; }
+    }
+
+    public int VelocidadActual
+    {
+        get { return _velocidadActual; }
+        set { _velocidadActual = value; }
+    }
+
+    public bool CajaAutomatica
+    {
+        get { return _cajaAutomatica; }
+        set { _cajaAutomatica = value; }
+    }
+
+    public bool ModoCrucero
+    {
+        get { return _modoCrucero; }
+        set { _modoCrucero = value; }
+    }
+
+    public string IDENTIFICADOR
+    {
+        get
         {
-            Console.Write("Marca: ");
-            string marca = Console.ReadLine();
+            string tipoCaja;
 
-            Console.Write("¿Caja automática? (s/n): ");
-            bool cajaAutomatica = Console.ReadLine().ToLower() == "s";
-
-            Automovil automovil = new Automovil(marca, cajaAutomatica);
-
-            int opcion;
-
-            do
+            if (CajaAutomatica)
             {
-                Console.Clear();
+                tipoCaja = "AUTO";
+            }
+            else
+            {
+                tipoCaja = "MAN";
+            }
 
-                Console.WriteLine("=== SIMULADOR AUTOMÓVIL ===");
-                Console.WriteLine($"ID: {automovil.Identificador}");
-                Console.WriteLine($"Motor: {(automovil.MotorEncendido ? "ON" : "OFF")}");
-                Console.WriteLine($"Velocidad: {automovil.VelocidadActual} km/h");
-                Console.WriteLine($"Modo crucero: {(automovil.ModoCrucero ? "ACTIVO" : "INACTIVO")}");
-
-                Console.WriteLine();
-                Console.WriteLine("1 - Encender/Apagar");
-                Console.WriteLine("2 - Acelerar +10");
-                Console.WriteLine("3 - Acelerar personalizado");
-                Console.WriteLine("4 - Frenar total");
-                Console.WriteLine("5 - Frenar personalizado");
-                Console.WriteLine("6 - Activar crucero");
-                Console.WriteLine("0 - Salir");
-
-                opcion = int.Parse(Console.ReadLine());
-
-                switch (opcion)
-                {
-                    case 1:
-                        automovil.EncenderApagar();
-                        break;
-
-                    case 2:
-                        automovil.Acelerar();
-                        break;
-
-                    case 3:
-                        Console.Write("Km/h: ");
-                        int acelerar = int.Parse(Console.ReadLine());
-                        automovil.Acelerar(acelerar);
-                        break;
-
-                    case 4:
-                        automovil.Frenar();
-                        break;
-
-                    case 5:
-                        Console.Write("Km/h a reducir: ");
-                        int frenar = int.Parse(Console.ReadLine());
-                        automovil.Frenar(frenar);
-                        break;
-
-                    case 6:
-                        automovil.ActivarModoCrucero();
-                        break;
-                }
-
-                Console.WriteLine("Presione ENTER...");
-                Console.ReadLine();
-
-            } while (opcion != 0);
+            return Marca.Substring(0, 3).ToUpper() + "-" + tipoCaja + "-2026";
         }
     }
-}
 
+    public void EncenderApagar()
+    {
+        MotorEncendido = !MotorEncendido;
+
+        if (!MotorEncendido)
+        {
+            VelocidadActual = 0;
+            ModoCrucero = false;
+        }
+    }
+
+    public void Acelerar()
+    {
+        if (MotorEncendido)
+        {
+            VelocidadActual += 10;
+        }
+    }
+
+    public void Acelerar(int km)
+    {
+        if (MotorEncendido)
+        {
+            VelocidadActual += km;
+        }
+    }
+
+    public void Frenar()
+    {
+        VelocidadActual = 0;
+        ModoCrucero = false;
+    }
+
+    public void Frenar(int km)
+    {
+        VelocidadActual -= km;
+
+        if (VelocidadActual < 0)
+        {
+            VelocidadActual = 0;
+        }
+
+        ModoCrucero = false;
+    }
+
+    public void MostrarDatos()
+    {
+        Console.WriteLine("Motor: " + MotorEncendido);
+        Console.WriteLine("Velocidad: " + VelocidadActual);
+        Console.WriteLine("Modo crucero: " + ModoCrucero);
+    }
+    }
+}
