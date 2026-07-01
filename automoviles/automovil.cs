@@ -1,4 +1,4 @@
-class Automovil
+public class Automovil
 {
     private string _marca;
     private bool _motorEncendido;
