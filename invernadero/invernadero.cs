@@ -1,4 +1,12 @@
-class Invernadero
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApp1
+{
+  public class Invernadero
 {
     private string _nombreSector;
     private int _temperaturaActual;
@@ -89,5 +97,7 @@ class Invernadero
         Console.WriteLine(REPORTE_ESTADO);
         Console.WriteLine("Temperatura: " + TemperaturaActual);
         Console.WriteLine("Humedad: " + HumedadSuelo);
+    }
+}
     }
 }
