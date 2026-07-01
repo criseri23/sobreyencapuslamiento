@@ -1,77 +1,122 @@
-﻿class SmartTV
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace SimuladorSmartTV
 {
-    private string _marca;
-    private int _pulgadas;
-    private bool _encendido;
-    private int _canalActual;
-    private int _volumen;
-    private bool _esPremium;
+ public class SmartTV
+{
+    private string marca;
+    private int pulgadas;
+    private bool encendido;
+    private int canalActual;
+    private int volumen;
+    private bool esPremium;
 
     public SmartTV(string marca, int pulgadas, bool esPremium)
-    {
-        this._marca = marca;
-        this._pulgadas = pulgadas;
-        this._esPremium = esPremium;
+    {this.Marca = marca;
+        this.Pulgadas = pulgadas;
+        this.EsPremium = esPremium;
 
-        _encendido = false;
-        _canalActual = 1;
-        _volumen = 20;
+        this.Encendido = false;
+        this.CanalActual = 1;
+        this.Volumen = 20;
+    }
+
+    public string Marca
+    {
+        get { return marca; }
+        set { marca = value; }
+    }
+
+    public int Pulgadas
+    {
+        get { return pulgadas; }
+        set { pulgadas = value; }
+    }
+
+    public bool Encendido
+    {
+        get { return encendido; }
+        set { encendido = value; }
+    }
+
+    public int CanalActual
+    {
+get { return canalActual; }
+        set { canalActual = value; }
+    }
+
+    public int Volumen
+    {
+        get { return volumen; }
+        set { volumen = value; }
+    }
+
+    public bool EsPremium
+    {
+        get { return esPremium; }
+        set { esPremium = value; }
     }
 
     public string CODIGO_CONFIG
     {
         get
         {
-            if (_esPremium)
+            if (EsPremium)
             {
-                return _marca + "-" + _pulgadas + "-PREM";
+                return Marca + "-" + Pulgadas + "-PREM";
             }
             else
             {
-                return _marca + "-" + _pulgadas + "-STD";
+                return Marca + "-" + Pulgadas + "-STD";
             }
         }
     }
 
     public void Power()
     {
-        _encendido = !_encendido;
+        Encendido = !Encendido;
     }
 
     public void CambiarCanal()
     {
-        if (_encendido)
+        if (Encendido)
         {
-            _canalActual++;
+            CanalActual++;
         }
     }
 
     public void CambiarCanal(int canal)
     {
-        if (_encendido)
+        if (Encendido)
         {
-                   _canalActual = canal;
+            CanalActual = canal;
         }
     }
 
     public void RegularVolumen(bool subir)
     {
-        if (_encendido)
+        if (Encendido)
         {
             if (subir)
             {
-                _volumen += 2;
+                Volumen += 2;
             }
             else
             {
-                _volumen -= 2;
+                Volumen -= 2;
             }
         }
     }
 
     public void MostrarEstado()
     {
-        Console.WriteLine("Canal: " + _canalActual);
-        Console.WriteLine("Volumen: " + _volumen);
+        Console.WriteLine("Canal: " + CanalActual);
+        Console.WriteLine("Volumen: " + Volumen);
     }
+    }
+}
 }
