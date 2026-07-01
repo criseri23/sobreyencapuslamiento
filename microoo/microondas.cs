@@ -1,4 +1,12 @@
-class Microondas
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace SimuladorMicroondas
+{
+  public class Microondas
 {
     private int _potencia;
     private int _tiempoSegundos;
@@ -81,5 +89,7 @@ class Microondas
         Console.WriteLine("Tiempo: " + PANTALLA_TIEMPO);
         Console.WriteLine("Potencia: " + Potencia);
         Console.WriteLine("Puerta abierta: " + PuertaAbierta);
+    }
+}
     }
 }
