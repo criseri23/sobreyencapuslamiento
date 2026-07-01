@@ -1,12 +1,12 @@
 class Bateria
 {
-    private int porcentajeCarga;
-    private int saludBateria;
-    private bool conectadoCargador;
-    private bool modoAhorroEnergia;
+    private int _porcentajeCarga;
+    private int _saludBateria;
+    private bool _conectadoCargador;
+    private bool _modoAhorroEnergia;
 
     public Bateria(int carga, int salud)
-    {
+    {c6
         this.PorcentajeCarga = carga;
         this.SaludBateria = salud;
 
@@ -16,26 +16,26 @@ class Bateria
 
     public int PorcentajeCarga
     {
-        get { return porcentajeCarga; }
-        set { porcentajeCarga = value; }
+        get { return _porcentajeCarga; }
+        set { _porcentajeCarga = value; }
     }
 
     public int SaludBateria
     {
-  get { return saludBateria; }
-        set { saludBateria = value; }
+  get { return _saludBateria; }
+        set { _saludBateria = value; }
     }
 
     public bool ConectadoCargador
     {
-        get { return conectadoCargador; }
-        set { conectadoCargador = value; }
+        get { return _conectadoCargador; }
+        set { _conectadoCargador = value; }
     }
 
     public bool ModoAhorroEnergia
     {
-        get { return modoAhorroEnergia; }
-        set { modoAhorroEnergia = value; }
+        get { return _modoAhorroEnergia; }
+        set { _modoAhorroEnergia = value; }
     }
 
     public string ESTADO_TEXTO
